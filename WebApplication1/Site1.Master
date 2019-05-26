@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApplication1.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Canteen</title>
+	<link rel="stylesheet" href="Style/StyleSheet1.css" type="text/css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+			<div id="wrapper">
+				<div id="banner">
+
+					<asp:Image ID="Image1" runat="server" ImageUrl="Media/banner.jpg" width="100%"/>
+
+				</div>
+				<div id="navigation">
+					<ul id="nav">
+						<li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Index.aspx">Home</asp:HyperLink></li>
+
+						<li style="float:right">
+						<li><asp:HyperLink ID="RegLink" runat="server" NavigateUrl="~/Pages/NewUser.aspx">Register</asp:HyperLink></li>
+						<li><asp:HyperLink ID="MyLink" runat="server" NavigateUrl="~/Pages/MyPage.aspx">My Page</asp:HyperLink></li>
+						<li><asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Pages/Login.aspx">Login</asp:HyperLink></li>
+						<li><asp:LinkButton ID="LogoutButton" runat="server" OnClick="LogoutAction">Logout</asp:LinkButton></li>
+					</ul>
+				</div>
+				<div id="content">
+					<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+					</asp:ContentPlaceHolder>
+
+				</div>
+			</div> 
+        </div>
+    </form>
+</body>
+</html>
