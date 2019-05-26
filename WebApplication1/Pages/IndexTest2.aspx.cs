@@ -22,7 +22,7 @@ namespace WebApplication1.Pages
         }
 
         String MySQLConnection = "Server=remotemysql.com;Port=3306;Database=fC9ZHTjFn1;Uid=fC9ZHTjFn1;Pwd=fWqAPndchu;"; 
-
+         
         string[] getFromDataBase()
         {
             string[] output = null;
