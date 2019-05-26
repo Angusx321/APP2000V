@@ -50,13 +50,13 @@ namespace WebApplication1.Pages
 					Button1.Text = "WORKING CONNECTION"; 
 					while (myReader.Read())
 					{
-						Panel cust = customPanel(myReader.GetString(1), myReader.GetString(2));
+						Panel cust = customPanel(myReader.GetString(0), myReader.GetString(1));
 						Panel pp = new Panel();
 
-						BulletedList1.Items.Add(myReader.GetString(1));
+						BulletedList1.Items.Add(myReader.GetString(0));
 						mainPanel.Controls.Add(pp);
 						Button aaff = new Button();
-						aaff.Text = myReader.GetString(1);
+						aaff.Text = myReader.GetString(0);
 						mainPanel.Controls.Add(aaff);
 
 					}
