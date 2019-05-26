@@ -12,43 +12,11 @@ namespace WebApplication1.Pages
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			using (MySqlConnection con = new MySqlConnection())
 			{
 				if (Session["New"] != null)
 				{
-					String connectionString = "Server=remotemysql.com; Port=3306; Database=fC9ZHTjFn1; Uid=fC9ZHTjFn1; Pwd=fWqAPndchu";
-					con.ConnectionString = connectionString;
-					con.Open();
-
-					//string key = Session["New"].ToString();
-					string findfirstName = "SELECT firstName FROM user_s WHERE email='" + Session["New"] + "'";
-					MySqlCommand com = new MySqlCommand(findfirstName, con);
-					object obj = Session["New"];
-					int firstName = Convert.ToInt32(obj);
-					com.Parameters.Add(new MySqlParameter("New", firstName));
-					MySqlDataReader reader = com.ExecuteReader();
-
-					reader.Read();
-					WelcomeLabel.Text += reader["firstName"].ToString();
-					//WelcomeLabel.Text += Session["New"].ToString();
-
-					con.Close();
-
-					//Grid
-					//using (MySqlCommand cmd = new MySqlCommand("SELECT foodID, orderstate FROM customerorders"))
-					//{
-					//	using (MySqlDataAdapter sda = new MySqlDataAdapter())
-					//	{
-					//		cmd.Connection = con;
-					//		sda.SelectCommand = cmd;
-					//		using (DataTable dt = new DataTable())
-					//		{
-					//			sda.Fill(dt);
-					//			GridView1.DataSource = dt;
-					//			GridView1.DataBind();
-					//		}
-					//	}
-					//}
+					WelcomeLabel.Text += Session["New"].ToString();
+					string[] dette = getFromDataBase();
 
 				}
 				else
@@ -57,14 +25,68 @@ namespace WebApplication1.Pages
 				}
 			}
 		}
-
-
-		protected void LogoutButton_Click(object sender, EventArgs e)
+		protected void Button1_Click(object sender, EventArgs e)
 		{
-			Session["New"] = null;
-			Response.Redirect("../Index.aspx");
+			Console.WriteLine("Knapp");
 		}
 
+		String MySQLConnection = "Server=remotemysql.com;Port=3306;Database=fC9ZHTjFn1;Uid=fC9ZHTjFn1;Pwd=fWqAPndchu;";
+
+		string[] getFromDataBase()
+		{
+			string[] output = null;
+			MySqlConnection databaseConnection = new MySqlConnection(MySQLConnection);
+			MySqlCommand commandDatabase = new MySqlCommand("SELECT fooditem.name, customerorders.orderstate FROM customerorders JOIN fooditem ON fooditem.foodID=customerorders.foodID JOIN user_s ON user_s.userId=customerorders.userId WHERE user_s.email='" + Session["New"] + "'", databaseConnection);
+
+			try
+			{
+				databaseConnection.Open();
+				MySqlDataReader myReader = commandDatabase.ExecuteReader();
+
+
+
+				if (myReader.HasRows)
+				{ 
+					Button1.Text = "WORKING CONNECTION"; 
+					while (myReader.Read())
+					{
+						Panel cust = customPanel(myReader.GetString(1), myReader.GetString(2));
+						Panel pp = new Panel();
+
+						BulletedList1.Items.Add(myReader.GetString(1));
+						mainPanel.Controls.Add(pp);
+						Button aaff = new Button();
+						aaff.Text = myReader.GetString(1);
+						mainPanel.Controls.Add(aaff);
+
+					}
+				}
+				else
+				{
+					Button1.Text = "NOT WORKING CONNECTION";
+				}
+
+
+				databaseConnection.Close();
+
+			}
+			catch (Exception e)
+			{
+				Button1.Text = e.Message;
+			}
+			return output;
+		}
+
+		Panel customPanel(string name, string orderstate)
+		{
+			Panel output = null;
+
+
+
+
+
+			return output;
+		}
 
 	}
 }
