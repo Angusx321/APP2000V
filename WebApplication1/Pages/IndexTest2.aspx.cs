@@ -21,7 +21,7 @@ namespace WebApplication1.Pages
             Console.WriteLine("Knapp");
         }
 
-        String MySQLConnection = "Server=remotemysql.com;Port=3306;Database=fC9ZHTjFn1;Uid=fC9ZHTjFn1;Pwd=fWqAPndchu;";
+        String MySQLConnection = "Server=remotemysql.com;Port=3306;Database=fC9ZHTjFn1;Uid=fC9ZHTjFn1;Pwd=fWqAPndchu;"; 
 
         string[] getFromDataBase()
         {
