@@ -380,6 +380,7 @@
     <Content Include="Media\subway.jpg" />
     <Content Include="Pages\Checkout.aspx" />
     <Content Include="Index.aspx" />
+    <Content Include="Pages\IndexTest2.aspx" />
     <Content Include="Pages\MyPage.aspx" />
     <Content Include="Pages\NewUser.aspx" />
     <Content Include="Style\StyleSheet1.css" />
@@ -407,6 +408,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IndexTest2.aspx.cs">
+      <DependentUpon>IndexTest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\IndexTest2.aspx.designer.cs">
+      <DependentUpon>IndexTest2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyPage.aspx.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>

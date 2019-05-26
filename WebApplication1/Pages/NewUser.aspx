@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<h2>Create new user</h2>
+    <h2>Create new user</h2>
 	<table class="auto-style1">
             <tr>
                 <td class="auto-style7">First Name:</td>
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">Confirm Password:</td>
+                <td class="auto-style7">Confirm Passwdord:</td>
                 <td class="auto-style3">
                     <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
